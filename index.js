@@ -20,6 +20,21 @@ timmy.save();
 ninja1.save();
 ninja2.save();
 
+app.get('/zombies', function(req, res){
+	Zombie.find().exec(function(err, zombies){
+		res.send(zombies);
+	});
+});
+
+app.get('/ninjas', function(req, res){
+	Ninja.find({name: 'goodLuck'}).exec(function(err, ninjas){
+		if(err){
+			res.send(err);
+		} else {
+			res.send(ninjas);
+		}	
+	});
+})
 
 
 console.log(joe);
